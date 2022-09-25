@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container my-3">
+    <div class="card">
+        <div class="card-header text-center fw-bold text-uppercase" style="background-color: #e6e6e6">
+            {% block title %}{% endblock %}
+        </div>
+        <div class="card-body">
+            <form method="POST" id="form">
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="bi-credit-card"></i>
+                            </div>
+                            <input id="fiscal_code_input" name="fiscal_code" type="text" class="form-control" placeholder="Fiscal Code">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="bi-person-lines-fill"></i>
+                            </div>
+                            <input name="first_name" id="first_name_input" type="text" class="form-control" placeholder="First Name">
+                            <input name="last_name" id="last_name_input" type="text" class="form-control" placeholder="Last Name">
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa fa-birthday-cake"></i>
+                            </div>
+                            <input name="birth_date" id="birth_date_input" type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="bi-envelope"></i>
+                            </div>
+                            <input name="email_address" id="email_address_input" type="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="bi-telephone"></i>
+                            </div>
+                            <input name="phone_number" id="phone_number_input" type="text" class="form-control" placeholder="Phone Number">
+                        </div>
+                    </div>
+                </div>
+
+                {% block extra_form %}{% endblock %}
+
+                <div class="row">
+                    <div class="col d-grid">
+                        <button type="submit" class="btn btn-primary fw-bold text-uppercase">
+                            {% block button_text %}{% endblock %}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename = 'js/form_verifier.js') }}"></script>
+
+{% block extra_container %}{% endblock %}
+
+{% endblock %}

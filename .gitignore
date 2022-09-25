@@ -1,0 +1,4 @@
+churchdb_venv/
+churchdb_mysql/churchdb/
+churchdb_mysql/.env
+churchdb_www/config.py

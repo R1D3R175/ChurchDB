@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style>
+  .login {
+    min-height: 100vh;
+  }
+
+  .bg-image {
+    background-image: url('https://scontent-mxp2-1.xx.fbcdn.net/v/t1.6435-9/92779701_125418655748788_7085832054188802048_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=973b4a&_nc_ohc=YenyPseK3v4AX_mq4dX&_nc_ht=scontent-mxp2-1.xx&oh=00_AT8Y0FAm8SONHxSBy4dRos45q89OaZysnDKMKi4Ld3XASQ&oe=62F790FC');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .login-heading {
+    font-weight: 300;
+  }
+
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+  }
+</style>
+
+<div class="container-fluid ps-md-0">
+  <div class="row g-0">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4 text-center">Welcome back!</h3>
+
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="d-grid">
+                  <div class=" rounded text-center text-white fw-bold p-2 mb-3 bg-danger">
+                    {{ messages[0] }}.
+                  </div>
+                </div>
+                {% endif %}
+              {% endwith %}
+
+              <!-- Sign In Form -->
+              <form method="POST" action="{{ url_for('main.index') }}">
+                <div class="form-floating mb-3">
+                  <input name="username" type="text" class="form-control" id="floatingInput"
+                    placeholder="Enter your username here">
+                  <label for="floatingInput">Username</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+
+                <div class="d-grid">
+                  <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign
+                    in</button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

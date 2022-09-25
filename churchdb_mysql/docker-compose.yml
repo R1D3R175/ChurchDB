@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:latest
+    ports:
+      - "33006:3306" # HOST:CONTAINER
+    env_file:
+      - .env
+    volumes:
+      - ./churchdb:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    ports:
+      - "80:8080" # HOST:CONTAINER

@@ -1,0 +1,12 @@
+{% extends 'user_explorer.html' %}
+
+{% block title %}Person Creator{% endblock %}
+
+{% block button_text %}Create{% endblock %}
+
+{% block extra_container %}
+    <script defer>
+        let navbar_page = document.querySelector("#navbarSupportedContent > ul > li:nth-child(2) > a")
+        navbar_page.classList.add("active")
+    </script>
+{% endblock %}

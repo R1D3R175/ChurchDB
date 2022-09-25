@@ -1,0 +1,62 @@
+{% extends 'user_explorer.html' %}
+
+{% block title %}Explore Database{% endblock %}
+
+{% block button_text %}Search{% endblock %}
+
+{% block extra_form %}
+<div class="row">
+    <div class="col mb-3">
+        <select name="search_option" class="form-select" aria-label="Default select example">
+            <option value="persons">Persons</option>
+            <option value="certificates" selected>Certificates</option>
+        </select>
+    </div>  
+</div>
+{% endblock %}
+
+{% block extra_container %}
+    <style>
+        .overflowable {
+            overflow-y: auto;
+            height: 50vh;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .overflowable::-webkit-scrollbar {
+            display: none;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+        }
+    </style>
+
+    <div class="container overflowable">
+        <div class="card-body">
+            <table class="table">
+                <thead id="results_thead" class="header">
+                    <tr>
+                        <th scope="col" class="text-center bg-white header">Type</th>
+                        <th scope="col" class="text-center bg-white header">First Name</th>
+                        <th scope="col" class="text-center bg-white header">Last Name</th>
+                        <th scope="col" class="text-center bg-white header">Fiscal Code</th>
+                        <th scope="col" class="text-center bg-white header" colspan="2">Links</th>
+                    </tr>  
+                </thead>
+                <tbody id="results_tbody" class="overflow-scroll">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script defer>
+        let navbar_page = document.querySelector("#navbarSupportedContent > ul > li:nth-child(1) > a")
+        navbar_page.classList.add("active")
+    </script>
+
+    <script src="{{ url_for('static', filename = 'js/search.js') }}"></script>
+{% endblock %}  
